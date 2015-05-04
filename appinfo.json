@@ -1,0 +1,31 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "James Downs",
+    "longName": "WatchLock",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/locklogo.png",
+                "menuIcon": true,
+                "name": "LOGO",
+                "type": "png"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "WatchLock",
+    "targetPlatforms": [
+        "aplite",
+        "basalt"
+    ],
+    "uuid": "1e8427ed-b9c1-4567-bf95-3a834cfc1a3d",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
