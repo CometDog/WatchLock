@@ -8,6 +8,8 @@ typedef struct persist{
   uint8_t c_2;
   uint8_t c_3;
   uint8_t c_4;
+  uint8_t c_5;
+  uint8_t c_6;
   bool set;
 }__attribute__((__packed__)) persist;
 
@@ -16,6 +18,8 @@ persist settings = {
   .c_2 = 5,
   .c_3 = 5,
   .c_4 = 5,
+  .c_5 = 5,
+  .c_6 = 6,
   .set = false,
 };
 
@@ -28,7 +32,7 @@ static TextLayer *s_date_layer, *s_time_layer, *s_action_title, *s_action_label;
 static Layer *s_line_layer;
 int unlock = 0;
 int reset = 0;
-int length = 4;
+int length = 6;
 static char s_length_buffer[] = "X";
 
 // Handle the actual watch face part of this whole deal
@@ -69,21 +73,47 @@ static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
     if (settings.c_1 == 1) {
       unlock = 1;
     }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 1) {
     if (settings.c_2 == 1) {
       unlock = 2;
-    }  
+    }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 2) {
     if (settings.c_3 == 1) {
       unlock = 3;
-    }  
+    }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 3) {
     if (settings.c_4 == 1) {
+      unlock = 4;
+    }
+    else {
       unlock = 0;
+    }
+  }
+  else if (unlock == 4) {
+    if (settings.c_3 == 1) {
+      unlock = 5;
+    }
+  }
+  else if (unlock == 5) {
+    if (settings.c_3 == 1) {
+      unlock = 0;
+      
       window_stack_remove(s_main_window, true);
+    }
+    else {
+      unlock = 0;
     }
   }
 }
@@ -96,21 +126,49 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
     if (settings.c_1 == 2) {
       unlock = 1;
     }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 1) {
     if (settings.c_2 == 2) {
       unlock = 2;
-    }  
+    }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 2) {
     if (settings.c_3 == 2) {
       unlock = 3;
-    }  
+    }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 3) {
     if (settings.c_4 == 2) {
+      unlock = 4;
+    }
+    else {
+      unlock = 0;
+    }
+  }
+  else if (unlock == 4) {
+    if (settings.c_3 == 2) {
+      unlock = 5;
+    }
+    else {
+      unlock = 0;
+    }
+  }
+  else if (unlock == 5) {
+    if (settings.c_3 == 2) {
       unlock = 0;
       window_stack_remove(s_main_window, true);
+    }
+    else {
+      unlock = 0;
     }
   }
 }
@@ -120,21 +178,49 @@ static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
     if (settings.c_1 == 3) {
       unlock = 1;
     }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 1) {
     if (settings.c_2 == 3) {
       unlock = 2;
-    }  
+    }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 2) {
     if (settings.c_3 == 3) {
       unlock = 3;
-    }  
+    }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 3) {
     if (settings.c_4 == 3) {
+      unlock = 4;
+    }
+    else {
+      unlock = 0;
+    }
+  }
+  else if (unlock == 4) {
+    if (settings.c_3 == 3) {
+      unlock = 5;
+    }
+    else {
+      unlock = 0;
+    }
+  }
+  else if (unlock == 5) {
+    if (settings.c_3 == 3) {
       unlock = 0;
       window_stack_remove(s_main_window, true);
+    }
+    else {
+      unlock = 0;
     }
   }
 }
@@ -144,21 +230,49 @@ static void back_click_handler(ClickRecognizerRef recognizer, void *context) {
     if (settings.c_1 == 4) {
       unlock = 1;
     }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 1) {
     if (settings.c_2 == 4) {
       unlock = 2;
-    }  
+    }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 2) {
     if (settings.c_3 == 4) {
       unlock = 3;
-    }  
+    }
+    else {
+      unlock = 0;
+    }
   }
   else if (unlock == 3) {
     if (settings.c_4 == 4) {
+      unlock = 4;
+    }
+    else {
+      unlock = 0;
+    }
+  }
+  else if (unlock == 4) {
+    if (settings.c_3 == 4) {
+      unlock = 5;
+    }
+    else {
+      unlock = 0;
+    }
+  }
+  else if (unlock == 5) {
+    if (settings.c_3 == 4) {
       unlock = 0;
       window_stack_remove(s_main_window, true);
+    }
+    else {
+      unlock = 0;
     }
   }
 }
@@ -167,9 +281,11 @@ static void select_long_click_handler(ClickRecognizerRef recognizer, void *conte
   settings.c_2 = 5;
   settings.c_3 = 5;
   settings.c_4 = 5;
+  settings.c_5 = 5;
+  settings.c_6 = 5;
   settings.set = false;
   unlock = 0;
-  length = 4;
+  length = 6;
   window_stack_push(s_set_window, true);
 }
 
@@ -194,7 +310,13 @@ static void set_up_click_handler(ClickRecognizerRef recognizer, void *context) {
   }
   else if (settings.c_4 == 5) {
     settings.c_4 = 1;
-
+  }
+  else if (settings.c_5 == 5) {
+    settings.c_5 = 1;
+  }
+  else if (settings.c_6 == 5) {
+    settings.c_6 = 1;
+    
     window_stack_remove(s_set_window, true);
     settings.set = true;
   }
@@ -216,6 +338,12 @@ static void set_select_click_handler(ClickRecognizerRef recognizer, void *contex
   }
   else if (settings.c_4 == 5) {
     settings.c_4 = 2;
+  }
+  else if (settings.c_5 == 5) {
+    settings.c_5 = 2;
+  }
+  else if (settings.c_6 == 5) {
+    settings.c_6 = 2;
 
     window_stack_remove(s_set_window, true);
     settings.set = true;
@@ -238,6 +366,12 @@ if (settings.c_1 == 5) {
   }
   else if (settings.c_4 == 5) {
     settings.c_4 = 3;
+  }
+  else if (settings.c_5 == 5) {
+    settings.c_5 = 3;
+  }
+  else if (settings.c_6 == 5) {
+    settings.c_6 = 3;
     
     window_stack_remove(s_set_window, true);
     settings.set = true;
@@ -260,6 +394,12 @@ static void set_back_click_handler(ClickRecognizerRef recognizer, void *context)
   }
   else if (settings.c_4 == 5) {
     settings.c_4 = 4;
+  }
+  else if (settings.c_5 == 5) {
+    settings.c_5 = 4;
+  }
+  else if (settings.c_6 == 5) {
+    settings.c_6 = 4;
     
     window_stack_remove(s_set_window, true);
     settings.set = true;
@@ -361,6 +501,8 @@ static void init() {
     settings.c_2 = 5;
     settings.c_3 = 5;
     settings.c_4 = 5;
+    settings.c_5 = 5;
+    settings.c_6 = 5;
     settings.set = false;
   }
   
