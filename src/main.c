@@ -102,12 +102,12 @@ static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
     }
   }
   else if (unlock == 4) {
-    if (settings.c_3 == 1) {
+    if (settings.c_5 == 1) {
       unlock = 5;
     }
   }
   else if (unlock == 5) {
-    if (settings.c_3 == 1) {
+    if (settings.c_6 == 1) {
       unlock = 0;
       
       window_stack_remove(s_main_window, true);
@@ -155,7 +155,7 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
     }
   }
   else if (unlock == 4) {
-    if (settings.c_3 == 2) {
+    if (settings.c_5 == 2) {
       unlock = 5;
     }
     else {
@@ -163,7 +163,7 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
     }
   }
   else if (unlock == 5) {
-    if (settings.c_3 == 2) {
+    if (settings.c_6 == 2) {
       unlock = 0;
       window_stack_remove(s_main_window, true);
     }
@@ -207,7 +207,7 @@ static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
     }
   }
   else if (unlock == 4) {
-    if (settings.c_3 == 3) {
+    if (settings.c_5 == 3) {
       unlock = 5;
     }
     else {
@@ -215,7 +215,7 @@ static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
     }
   }
   else if (unlock == 5) {
-    if (settings.c_3 == 3) {
+    if (settings.c_6 == 3) {
       unlock = 0;
       window_stack_remove(s_main_window, true);
     }
@@ -259,7 +259,7 @@ static void back_click_handler(ClickRecognizerRef recognizer, void *context) {
     }
   }
   else if (unlock == 4) {
-    if (settings.c_3 == 4) {
+    if (settings.c_5 == 4) {
       unlock = 5;
     }
     else {
@@ -267,7 +267,7 @@ static void back_click_handler(ClickRecognizerRef recognizer, void *context) {
     }
   }
   else if (unlock == 5) {
-    if (settings.c_3 == 4) {
+    if (settings.c_6 == 4) {
       unlock = 0;
       window_stack_remove(s_main_window, true);
     }
